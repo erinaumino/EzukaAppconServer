@@ -1,6 +1,21 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
 
+  def api
+    apps = App.all
+    json = apps.map{ |app|
+      {
+        'name' => app.name, 
+        'teamName' => app.team_name,
+        'square' => app.square.url,
+        'urls' => [app.image0.url, app.image1.url, app.image2.url, app.image3.url],
+        'about' => app.about,
+        'feature' => app.feature
+      }
+    }
+    render :json => json
+  end
+
   # GET /apps
   # GET /apps.json
   def index
