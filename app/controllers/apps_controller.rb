@@ -1,5 +1,5 @@
 class AppsController < ApplicationController
-  before_action :set_app, only: [:show, :edit, :update, :destroy]
+  before_action :set_app, only: [:destroy]
 
   def api
     apps = App.all
@@ -25,6 +25,7 @@ class AppsController < ApplicationController
   # GET /apps/1
   # GET /apps/1.json
   def show
+    @app = App.find_by(uid: params[:uid])    
   end
 
   # GET /apps/new
@@ -34,6 +35,7 @@ class AppsController < ApplicationController
 
   # GET /apps/1/edit
   def edit
+    @app = App.find_by(uid: params[:uid])
   end
 
   # POST /apps
@@ -41,10 +43,10 @@ class AppsController < ApplicationController
   def create
     @app = App.new(app_params)
     @app.count = 0
-
+    @app.uid = SecureRandom.uuid
     respond_to do |format|
       if @app.save
-        format.html { redirect_to @app, notice: 'App was successfully created.' }
+        format.html { redirect_to app_path(uid: @app.uid), notice: 'App was successfully created.' }
         format.json { render :show, status: :created, location: @app }
       else
         format.html { render :new }
@@ -56,9 +58,10 @@ class AppsController < ApplicationController
   # PATCH/PUT /apps/1
   # PATCH/PUT /apps/1.json
   def update
+    @app = App.find(params[:uid])
     respond_to do |format|
       if @app.update(app_params)
-        format.html { redirect_to @app, notice: 'App was successfully updated.' }
+        format.html { redirect_to app_path(uid: @app.uid), notice: 'App was successfully updated.' }
         format.json { render :show, status: :ok, location: @app }
       else
         format.html { render :edit }
@@ -72,7 +75,7 @@ class AppsController < ApplicationController
   def destroy
     @app.destroy
     respond_to do |format|
-      format.html { redirect_to apps_url, notice: 'App was successfully destroyed.' }
+      format.html { redirect_to admin2017_apps_url, notice: 'App was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,7 +83,7 @@ class AppsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_app
-      @app = App.find(params[:id])
+      @app = App.find(params[:uid])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

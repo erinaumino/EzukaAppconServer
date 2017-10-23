@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022184232) do
+ActiveRecord::Schema.define(version: 20171023125340) do
 
   create_table "apps", force: :cascade do |t|
     t.string "name"
@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 20171022184232) do
     t.datetime "updated_at", null: false
     t.string "team_name"
     t.integer "count"
+    t.string "uid"
   end
 
   create_table "qrcodes", force: :cascade do |t|
     t.string "uid"
-    t.boolean "inVoted"
+    t.boolean "isVoted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

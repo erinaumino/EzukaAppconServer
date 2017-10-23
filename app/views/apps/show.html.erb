@@ -12,27 +12,27 @@
 
 <p>
   <strong>Square:</strong>
-  <%= @app.square %>
+  <%= image_tag @app.square %>
 </p>
 
 <p>
   <strong>Image0:</strong>
-  <%= @app.image0 %>
+  <%= image_tag @app.image0 %>
 </p>
 
 <p>
   <strong>Image1:</strong>
-  <%= @app.image1 %>
+  <%= image_tag @app.image1 %>
 </p>
 
 <p>
   <strong>Image2:</strong>
-  <%= @app.image2 %>
+  <%= image_tag @app.image2 %>
 </p>
 
 <p>
   <strong>Image3:</strong>
-  <%= @app.image3 %>
+  <%= image_tag @app.image3 %>
 </p>
 
 <p>
@@ -45,5 +45,4 @@
   <%= @app.feature %>
 </p>
 
-<%= link_to 'Edit', edit_app_path(@app) %> |
-<%= link_to 'Back', apps_path %>
+<%= link_to 'Edit', edit_app_path(uid: @app.uid) %> |

@@ -1,4 +1,4 @@
-<%= form_with(model: app, local: true) do |form| %>
+<%= form_with(model: app, local: true, class: "form-control") do |form| %>
   <% if app.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(app.errors.count, "error") %> prohibited this app from being saved:</h2>
@@ -13,49 +13,49 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :app_name %>
+    <%= form.text_field :name, id: :app_name, class: "form-control" %>
   </div>
 
    <div class="field">
     <%= form.label :team_name %>
-    <%= form.text_field :team_name, id: :app_team_name %>
+    <%= form.text_field :team_name, id: :app_team_name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :square %>
-    <%= form.file_field :square, id: :app_square %>
+    <%= form.file_field :square, id: :app_square, class: "form-control-file" %>
   </div>
   
   <div class="field">
     <%= form.label :image0 %>
-    <%= form.file_field :image0, id: :app_image0 %>
+    <%= form.file_field :image0, id: :app_image0, class: "form-control-file" %>
   </div>
 
     <div class="field">
     <%= form.label :image1 %>
-    <%= form.file_field :image1, id: :app_image1 %>
+    <%= form.file_field :image1, id: :app_image1, class: "form-control-file" %>
   </div>
 
   <div class="field">
     <%= form.label :image2 %>
-    <%= form.file_field :image2, id: :app_image2 %>
+    <%= form.file_field :image2, id: :app_image2, class: "form-control-file" %>
   </div>
 
   <div class="field">
     <%= form.label :image3 %>
-    <%= form.file_field :image3, id: :app_image3 %>
+    <%= form.file_field :image3, id: :app_image3, class: "form-control-file" %>
   </div>
 
   <div class="field">
     <%= form.label :about %>
-    <%= form.text_area :about, id: :app_about %>
+    <%= form.text_area :about, id: :app_about, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :feature %>
-    <%= form.text_area :feature, id: :app_feature %>
+    <%= form.text_area :feature, id: :app_feature, class: "form-control" %>
   </div>
-
+  <input type="hidden" name="uid" value="<%= @app.uid %> ">
   <div class="actions">
     <%= form.submit %>
   </div>

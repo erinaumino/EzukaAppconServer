@@ -24,4 +24,6 @@
 
 /public/uploads
 .keep
+/qrimages
 
+.DS_Store
