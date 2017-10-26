@@ -10,7 +10,8 @@ class AppsController < ApplicationController
         'square' => app.square.url,
         'urls' => [app.image0.url, app.image1.url, app.image2.url, app.image3.url],
         'about' => app.about,
-        'feature' => app.feature
+        'feature' => app.feature,
+        'uid' => app.uid
       }
     }
     render :json => json

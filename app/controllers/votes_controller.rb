@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   def result
+    @apps = App.all
   end
 
   def vote
