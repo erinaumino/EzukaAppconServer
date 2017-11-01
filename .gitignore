@@ -23,7 +23,6 @@
 .byebug_history
 
 /public/uploads
-.keep
 /qrimages
 
 .DS_Store
